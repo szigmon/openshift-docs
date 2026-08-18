@@ -51,6 +51,14 @@ These environment variables must be set before you apply DPF Operator installati
 |The CIDR range for the DPU high-speed network IP addresses. This range must match the network infrastructure design.
 |`192.168.200.0/29`
 
+|`HBN_OVN_NETWORK`
+|The CIDR range for the HBN-OVN bridge network. Used for HBN service connectivity.
+|`10.0.120.0/22`
+
+|`DPU_HOST_CIDR`
+|The CIDR range for the DPU nodes subnet. Must be set to match your DPU infrastructure.
+|`10.6.135.0/24`
+
 |`NUM_VFS`
 |The number of SR-IOV virtual functions to create on each DPU.
 |`46`
