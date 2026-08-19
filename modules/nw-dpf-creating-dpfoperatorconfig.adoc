@@ -117,8 +117,3 @@ dpuservice-controller-manager-7459985c77-bxsqp         1/1     Running   0      
 maintenance-operator-585767f779-4qvvn                  1/1     Running   0          21h
 static-cm-controller-manager-6d977d5f84-756pw          1/1     Running   0          2m47s
 ----
-+
-[NOTE]
-====
-The `servicechainset-controller-manager` pod might show a status of `ContainerCreating` at this phase. This is expected behavior.
-====
