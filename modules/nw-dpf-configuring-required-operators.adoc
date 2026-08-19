@@ -14,31 +14,10 @@ After the required Operators are installed, configure the multicluster engine, N
 * You have access to the cluster as a user with the `cluster-admin` role.
 * You have installed the OpenShift CLI (`oc`).
 * You have installed the {cert-manager-operator}, MetalLB Operator, {gitops-title}, and NVIDIA Maintenance Operator.
-* You have installed the multicluster engine for Kubernetes Operator and the Node Feature Discovery Operator. You can install them by using the Assisted Installer during cluster creation.
+* You have installed the multicluster engine for Kubernetes Operator and the Node Feature Discovery Operator. You can install them by using the Assisted Installer during cluster creation. For manual installation, see link:https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.12/html-single/clusters/index#hypershift-intro[Installing multicluster engine for Kubernetes Operator].
 
 .Procedure
 
-. Create a file named `multiclusterengine-instance.yaml` with the following content to enable hosted control planes:
-+
-[source,yaml]
-----
-apiVersion: multicluster.openshift.io/v1
-kind: MultiClusterEngine
-metadata:
-  name: multiclusterengine
-spec:
-  overrides:
-    components:
-    - name: hypershift
-      enabled: true
-----
-
-. Apply the file:
-+
-[source,terminal]
-----
-$ oc apply -f multiclusterengine-instance.yaml
-----
 
 . Define the cluster variables used by Node Feature Discovery:
 +
@@ -265,11 +244,25 @@ $ oc patch network.operator.openshift.io cluster --type=merge -p \
 
 .Verification
 
-* Verify that the `MultiClusterEngine` instance is available:
+* Verify that the `MultiClusterEngine` instance is created:
 +
 [source,terminal]
 ----
-$ oc get multiclusterengine multiclusterengine
+$ oc get multiclusterengine mce
+----
++
+.Example output
+[source,terminal]
+----
+NAME   STATUS      AGE     CURRENTVERSION   DESIREDVERSION   MESSAGE
+mce    Available   4m58s   2.17.0           2.17.0           All components available
+----
+
+* Verify HyperShift is enabled:
++
+[source,terminal]
+----
+$ oc get multiclusterengine mce -o jsonpath='{.spec.overrides.components[?(@.name=="hypershift")].enabled}'
 ----
 
 * Verify that the `NodeFeatureDiscovery` instance and `NodeFeatureRule` are configured:
