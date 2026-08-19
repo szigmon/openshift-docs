@@ -302,6 +302,12 @@ spec:
 ----
 $ envsubst < dpuflavor.yaml | oc apply -f -
 ----
++
+.Example output
+[source,terminal]
+----
+dpuflavor.provisioning.dpu.nvidia.com/hbn-ovnk created
+----
 
 .Verification
 
