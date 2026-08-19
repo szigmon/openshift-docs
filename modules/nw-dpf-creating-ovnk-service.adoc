@@ -126,6 +126,12 @@ spec:
 ----
 $ oc apply -f hbn.yaml
 ----
++
+.Example output
+[source,terminal]
+----
+dpuserviceconfiguration.svc.dpu.nvidia.com/hbn created
+----
 
 . Create a file named `ovn-k.yaml` with the following content:
 +
@@ -165,6 +171,12 @@ spec:
 [source,terminal]
 ----
 $ envsubst < ovn-k.yaml | oc apply -f -
+----
++
+.Example output
+[source,terminal]
+----
+dpuserviceconfiguration.svc.dpu.nvidia.com/ovn created
 ----
 
 .Verification
