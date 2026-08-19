@@ -54,7 +54,7 @@ interfaces:
 . Click *Add hosts* to add hosts to the cluster.
 Only control plane nodes are required at this stage.
 
-. After the installation completes, download the `KUBECONFIG` file and save it.
+. After the installation completes, download the `KUBECONFIG` file and save it as `mgmt-kubeconfig`.
 
 .Verification
 
