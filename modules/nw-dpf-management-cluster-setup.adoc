@@ -32,7 +32,7 @@ interfaces:
       dhcp: true
       enabled: true
     mac-address: <xx:xx:xx:xx:xx:xx>
-    mtu: 9000 # Set to 9000 for jumbo frames or 1500 for standard MTU
+    mtu: 1500 # Set to 1500 for standard MTU or 9000 for jumbo frames
     name: <interface-name>
     state: up
     type: ethernet
