@@ -106,12 +106,10 @@ $ oc get pods -n dpf-operator-system
 ----
 NAME                                                   READY   STATUS    RESTARTS   AGE
 argocd-application-controller-0                        1/1     Running   0          13h
+argocd-dex-server-6dd56c8469-bhsq4                     1/1     Running   0          13h
 argocd-redis-7565dcc7fc-nz92w                          1/1     Running   0          13h
 argocd-repo-server-5cd89d9dd8-l9s58                    1/1     Running   0          13h
 argocd-server-6cbf77db84-gzrl9                         1/1     Running   0          13h
-dpf-dpu-detector-kwqtm                                 1/1     Running   0          2m46s
-dpf-dpu-detector-mqbn4                                 1/1     Running   0          2m46s
-dpf-dpu-detector-vt968                                 1/1     Running   0          2m46s
 dpf-operator-controller-manager-7bf9744c5f-zdvhw       1/1     Running   0          6m46s
 dpf-provisioning-controller-manager-57d4767fdc-ftm7q   1/1     Running   0          2m47s
 dpf-nodesriovdeviceplugin-controller-584696485b-ffnsk  1/1     Running   0          41h
