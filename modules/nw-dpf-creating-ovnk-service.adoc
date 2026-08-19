@@ -144,8 +144,8 @@ spec:
         global:
           enableOvnKubeIdentity: false
         k8sAPIServer: https://$HOST_CLUSTER_API:6443
-        podNetwork: $POD_CIDR/23
-        serviceNetwork: $SERVICE_CIDR
+        podNetwork: 10.128.0.0/14/23
+        serviceNetwork: 172.30.0.0/16
         hostNetworkNamespace: "openshift-host-network"
         mtu: $OVN_MTU
         dpuManifests:

@@ -39,12 +39,12 @@ These environment variables must be set before you apply DPF Operator installati
 |The CIDR range for the hosted cluster node network.
 |`10.0.0.0/16`
 
-|`POD_CIDR`
-|The CIDR range for the pod network.
+|`POD_CIDR` (optional)
+|The CIDR range for the pod network. Uses OpenShift default if not specified.
 |`10.128.0.0/14`
 
-|`SERVICE_CIDR`
-|The CIDR range for the service network.
+|`SERVICE_CIDR` (optional)
+|The CIDR range for the service network. Uses OpenShift default if not specified.
 |`172.30.0.0/16`
 
 |`VTEP_CIDR`
