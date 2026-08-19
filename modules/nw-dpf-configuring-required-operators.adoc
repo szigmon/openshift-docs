@@ -18,6 +18,13 @@ After the required Operators are installed, configure the multicluster engine, N
 
 .Procedure
 
+. If you manually installed the multicluster engine for Kubernetes Operator, enable HyperShift:
++
+[source,terminal]
+----
+$ oc patch multiclusterengine mce --type=merge -p \
+  '{"spec":{"overrides":{"components":[{"name":"hypershift","enabled":true}]}}}'
+----
 
 . Define the cluster variables used by Node Feature Discovery:
 +
