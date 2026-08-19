@@ -14,7 +14,7 @@ After the required Operators are installed, configure the multicluster engine, N
 * You have access to the cluster as a user with the `cluster-admin` role.
 * You have installed the OpenShift CLI (`oc`).
 * You have installed the {cert-manager-operator}, MetalLB Operator, {gitops-title}, and NVIDIA Maintenance Operator.
-* You have installed the multicluster engine for Kubernetes Operator and the Node Feature Discovery Operator. You can install them by using the Assisted Installer during cluster creation. For manual installation, see link:https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.17/html/install/index[Installing multicluster engine for Kubernetes Operator].
+* You have installed the Logical Volume Manager Storage Operator, multicluster engine for Kubernetes Operator, and the Node Feature Discovery Operator. You can install them by using the Assisted Installer during cluster creation. For manual installation, see link:https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.17/html/install/index[Installing multicluster engine for Kubernetes Operator] and ensure that HyperShift is enabled.
 
 .Procedure
 
