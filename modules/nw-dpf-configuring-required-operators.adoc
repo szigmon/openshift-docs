@@ -228,6 +228,7 @@ spec:
   applicationSet:
     enabled: false
   sso:
+    provider: dex
     dex:
       openShiftOAuth: false
   notifications:

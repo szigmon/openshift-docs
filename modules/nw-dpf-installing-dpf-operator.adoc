@@ -74,6 +74,7 @@ $ oc wait --for=condition=ready --namespace dpf-operator-system pods --all
 [source,terminal]
 ----
 pod/argocd-application-controller-0 condition met
+pod/argocd-dex-server-6dd56c8469-bhsq4 condition met
 pod/argocd-redis-b4f94bb8d-wr86b condition met
 pod/argocd-repo-server-96765f997-79k9q condition met
 pod/argocd-server-648c7ff85f-7frtg condition met
