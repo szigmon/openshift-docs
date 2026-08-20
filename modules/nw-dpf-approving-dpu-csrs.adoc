@@ -4,7 +4,7 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="nw-dpf-approving-dpu-csrs_{context}"]
-= Approve DPU node CSRs
+= Approve hosted cluster CSRs for DPU provisioning
 
 [role="_abstract"]
 You must approve the pending certificate signing requests (CSRs) for DPU nodes on the hosted cluster so that the DPU nodes can join the hosted cluster and complete provisioning.
