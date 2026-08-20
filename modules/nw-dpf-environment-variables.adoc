@@ -29,7 +29,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`TAG`
 |The version tag for the DPF Operator Helm chart.
-|`<GA-TAG>v26.4.1-beta.1`
+|`<GA-TAG>`
 
 |`TARGETCLUSTER_API_SERVER_PORT`
 |The port number of the hosted cluster API server.
