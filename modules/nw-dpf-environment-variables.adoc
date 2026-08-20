@@ -17,7 +17,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`CLUSTER_NAME`
 |The name of the management cluster.
-|`mycluster`
+|`<YOUR_CLUSTER_NAME>`
 
 |`BASE_DOMAIN`
 |The base domain for the management cluster.
@@ -29,7 +29,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`TAG`
 |The version tag for the DPF Operator Helm chart.
-|`v26.4.0`
+|`<GA-TAG>v26.4.1-beta.1`
 
 |`TARGETCLUSTER_API_SERVER_PORT`
 |The port number of the hosted cluster API server.
@@ -97,7 +97,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`OVN_CHART_VERSION`
 |The version of the OVN-Kubernetes Helm chart.
-|`v26.4.0-ocpbeta`
+|`<GA-OVN-CHART-VERSION>`
 
 |`OVN_MTU`
 |The MTU value for OVN-Kubernetes networking. Use `1400` for standard MTU or `8940` for jumbo frames.
@@ -113,7 +113,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`REGISTRY`
 |The Helm chart registry URL for the DPF Operator.
-|`\https://helm.ngc.nvidia.com/nvidia/doca`
+|`<GA-helm-repo-URL>`
 
 |`NODES_MTU`
 |The MTU value for the node network interfaces. Set during environment setup.
