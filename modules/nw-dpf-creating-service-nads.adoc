@@ -8,14 +8,10 @@
 
 [role="_abstract"]
 You can create `DPUServiceNAD` custom resources to define the network attachments available to DPU services on the hosted cluster.
-Each `DPUServiceNAD` resource maps to an Open vSwitch (OVS) bridge on the DPU and specifies the resource type, IP address management (IPAM) mode, and maximum transmission unit (MTU) configuration.
+Each `DPUServiceNAD` resource maps to an Open vSwitch (OVS) bridge on the DPU and specifies the resource type, IP address management (IPAM) mode, and maximum transmission unit (MTU) configuration:
 
-The `mybrhbn` network attachment is required and must be manually created. It maps to the `br-hbn` bridge, used by the HBN service. IPAM is disabled because IP allocation is handled by `DPUServiceIPAM`.
-
-[NOTE]
-====
-The `mybrsfc` network attachment for service function chaining is automatically created and managed by the DPF operator when the `DPFOperatorConfig` resource is applied. Do not create it manually to avoid conflicts.
-====
+* `mybrhbn` maps to the `br-hbn` bridge, used by the HBN service. IPAM is disabled because IP allocation is handled by `DPUServiceIPAM`.
+* `mybrsfc` maps to the `br-sfc` bridge, used for service function chaining. IPAM is enabled for this network attachment.
 
 .Prerequisites
 
@@ -39,6 +35,17 @@ spec:
   ipam: false
   bridge: "br-hbn"
   serviceMTU: $NODES_MTU
+---
+apiVersion: svc.dpu.nvidia.com/v1alpha1
+kind: DPUServiceNAD
+metadata:
+  name: mybrsfc
+  namespace: dpf-operator-system
+spec:
+  resourceType: sf
+  ipam: true
+  bridge: "br-sfc"
+  serviceMTU: $NODES_MTU
 ----
 
 . Apply the resource file:
@@ -46,6 +53,13 @@ spec:
 [source,terminal]
 ----
 $ envsubst < dpuservice-nad.yaml | oc apply -f -
+----
++
+.Example output
+[source,terminal]
+----
+dpuservicenad.svc.dpu.nvidia.com/mybrhbn created
+dpuservicenad.svc.dpu.nvidia.com/mybrsfc created
 ----
 
 .Verification
@@ -62,5 +76,5 @@ $ oc get dpuservicenad -n dpf-operator-system
 ----
 NAME       READY   AGE
 mybrhbn    True    2m
-mybrsfc    True    5m  # Auto-created by DPF operator
+mybrsfc    True    2m
 ----
