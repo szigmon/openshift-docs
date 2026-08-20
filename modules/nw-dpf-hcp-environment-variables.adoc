@@ -21,7 +21,7 @@ These environment variables must be set before you create secrets, the `DPUClust
 
 |`OPENSHIFT_VERSION`
 |The {product-title} version for the hosted cluster.
-|`4.22.0`
+|`4.22.7`
 
 |`CLUSTERS_NAMESPACE`
 |The namespace where hosted cluster resources are created.
@@ -33,7 +33,7 @@ These environment variables must be set before you create secrets, the `DPUClust
 
 |`BLUEFIELD_OCP_IMAGE`
 |The BlueField {product-title} layer container image URL. When set, this value is used as `machineOSURL` in the `DPFHCPProvisioner` resource and skips automatic image lookup. This example value matches the GA draft reference deployment; confirm the supported image for your environment before use.
-|`quay.io/eelgaev/bluefield-ocp:4.21.0_3.4.0-beta-v2`
+|`quay.io/edge-infrastructure/bluefield-ocp:4.22.7`
 
 |`ETCD_STORAGE_CLASS`
 |The storage class used for etcd persistent volume claims.
@@ -41,11 +41,8 @@ These environment variables must be set before you create secrets, the `DPUClust
 
 |`OCP_RELEASE_IMAGE`
 |The {product-title} release image for the hosted cluster. Derived from `OPENSHIFT_VERSION`.
-|`quay.io/openshift-release-dev/ocp-release:4.22.0-multi`
+|`quay.io/openshift-release-dev/ocp-release:4.22.7-multi`
 
-|`HOSTED_CLUSTER_VIP`
-|The virtual IP address for the hosted cluster API server.
-|`192.168.1.200`
 
 |`PULL_SECRET_NAME`
 |The name of the Kubernetes secret that contains the pull secret for the hosted cluster.
@@ -63,6 +60,10 @@ These environment variables must be set before you create secrets, the `DPUClust
 |The file path to the SSH public key file on your workstation.
 |`/root/.ssh/id_rsa.pub`
 
+|`HOSTED_CLUSTER_VIP`
+|The virtual IP address for the hosted cluster API server, allocated from the management cluster subnet.
+|`192.168.1.200`
+
 |===
 
 Set all environment variables in your shell before proceeding:
@@ -70,15 +71,15 @@ Set all environment variables in your shell before proceeding:
 [source,terminal]
 ----
 $ export HOSTED_CLUSTER_NAME="dpf-hosted"
-$ export OPENSHIFT_VERSION="4.22.0"
+$ export OPENSHIFT_VERSION="4.22.7"
 $ export CLUSTERS_NAMESPACE="clusters"
 $ export BASE_DOMAIN="example.com"
-$ export BLUEFIELD_OCP_IMAGE="quay.io/eelgaev/bluefield-ocp:4.21.0_3.4.0-beta-v2"
+$ export BLUEFIELD_OCP_IMAGE="quay.io/edge-infrastructure/bluefield-ocp:4.22.7"
 $ export ETCD_STORAGE_CLASS="lvms-vg1"
 $ export OCP_RELEASE_IMAGE="quay.io/openshift-release-dev/ocp-release:${OPENSHIFT_VERSION}-multi"
-$ export HOSTED_CLUSTER_VIP="192.168.1.200"
 $ export PULL_SECRET_NAME="pull-secret"
 $ export OPENSHIFT_PULL_SECRET="/root/pull-secret.txt"
 $ export SSH_KEY_SECRET_NAME="ssh-key"
 $ export SSH_KEY="/root/.ssh/id_rsa.pub"
+$ export HOSTED_CLUSTER_VIP="192.168.1.200"
 ----

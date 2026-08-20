@@ -56,7 +56,7 @@ where:
 `ocpReleaseImage`:: Specifies the {product-title} release image for the hosted cluster.
 `pullSecretRef`:: Specifies the name of the pull secret in the same namespace.
 `sshKeySecretRef`:: Specifies the name of the SSH key secret in the same namespace.
-`virtualIP`:: Specifies the virtual IP address for the hosted cluster API server, allocated from the MetalLB address pool.
+`virtualIP`:: Specifies the virtual IP address for the hosted cluster API server, allocated from the management cluster subnet.
 
 The following optional fields use working defaults and do not need to be specified unless you want to override them:
 
