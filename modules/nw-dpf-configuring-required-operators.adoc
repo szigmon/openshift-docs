@@ -18,14 +18,6 @@ After the required Operators are installed, configure the multicluster engine, N
 
 .Procedure
 
-. If you manually installed the multicluster engine operator, enable HyperShift:
-+
-[source,terminal]
-----
-$ oc patch multiclusterengine mce --type=merge -p \
-  '{"spec":{"overrides":{"components":[{"name":"hypershift","enabled":true}]}}}'
-----
-
 . Define the cluster variables used by Node Feature Discovery:
 +
 [source,terminal]
@@ -270,7 +262,13 @@ mce    Available   4m58s   2.17.0           2.17.0           All components avai
 +
 [source,terminal]
 ----
-$ oc get multiclusterengine mce -o jsonpath='{.spec.overrides.components[?(@.name=="hypershift")].enabled}'
+$ oc get multiclusterengine mce -o jsonpath='{.spec.overrides.components[?(@.name=="hypershift")].enabled}{"\n"}'
+----
++
+.Example output
+[source,terminal]
+----
+true
 ----
 
 * Verify that the `NodeFeatureDiscovery` instance and `NodeFeatureRule` are configured:
