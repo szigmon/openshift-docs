@@ -7,9 +7,9 @@
 = Configure worker nodes for DPU operation
 
 [role="_abstract"]
-You must create a `MachineConfigPool` resource and deploy the `dpu-worker-config` Helm chart to configure worker nodes with DPUs before adding those nodes to the management cluster.
+You must deploy the `dpu-worker-config` Helm chart to configure worker nodes with DPUs before adding those nodes to the management cluster.
+The `dpu-worker-config` Helm chart creates the `MachineConfigPool`, `dpu-worker-configuration` MachineConfig, and other required resources that configure the bridge, OVS services, and IP routing on worker nodes.
 The `MachineConfigPool` groups DPU-equipped worker nodes so that the Machine Config Operator can apply DPU-specific configurations to them.
-The `dpu-worker-config` Helm chart creates the `dpu-worker-configuration` MachineConfig resource that configures the bridge, OVS services, and IP routing on worker nodes.
 
 The MachineConfig resource performs several configuration tasks required by DPF:
 
@@ -38,34 +38,8 @@ $ helm upgrade --install dpu-worker-config \
 +
 [NOTE]
 ====
-If your network uses jumbo frames, set the MTU by adding `--set networkMTU=9000` to the command.
+If your network uses jumbo frames, set the MTU by adding `--set networkMTU=9000` to the command. For OpenShift-standard bridge naming, add `--set bridgeName="br-ex"`.
 ====
-
-. Create a file named `worker-dpu-mcp.yaml` with the following `MachineConfigPool` definition:
-+
-[source,yaml]
-----
-apiVersion: machineconfiguration.openshift.io/v1
-kind: MachineConfigPool
-metadata:
-  name: worker-dpu
-spec:
-  machineConfigSelector:
-    matchExpressions:
-      - {key: machineconfiguration.openshift.io/role, operator: In, values: [worker, worker-dpu]}
-  maxUnavailable: 1
-  nodeSelector:
-    matchLabels:
-      node-role.kubernetes.io/worker-dpu: ""
-  paused: false
-----
-
-. Apply the `MachineConfigPool`:
-+
-[source,terminal]
-----
-$ oc apply -f worker-dpu-mcp.yaml
-----
 
 .Verification
 
@@ -76,14 +50,7 @@ $ oc apply -f worker-dpu-mcp.yaml
 $ helm list -n dpf-hcp-provisioner-system
 ----
 
-* Verify that the `dpu-worker-configuration` MachineConfig is created:
-+
-[source,terminal]
-----
-$ oc get machineconfig dpu-worker-configuration
-----
-
-* Verify that the `MachineConfigPool` exists:
+* Verify that the `MachineConfigPool` was created automatically:
 +
 [source,terminal]
 ----
@@ -93,8 +60,22 @@ $ oc get machineconfigpool worker-dpu
 .Example output
 [source,terminal]
 ----
-NAME         CONFIG   UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT
-worker-dpu            True      False      False      0              0
+NAME         CONFIG                                                 UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+worker-dpu   rendered-worker-dpu-b4a44cc606c2ffcf07067d1e943a8758   True      False      False      1              1                   1                     0                      2m
+----
+
+* Verify that the `dpu-worker-configuration` MachineConfig is created:
++
+[source,terminal]
+----
+$ oc get machineconfig dpu-worker-configuration
+----
++
+.Example output
+[source,terminal]
+----
+NAME                       GENERATEDBYCONTROLLER   IGNITIONVERSION   AGE
+dpu-worker-configuration                           3.2.0             2m
 ----
 
 [NOTE]
