@@ -9,11 +9,6 @@
 [role="_abstract"]
 You can verify that all DPU services, IPAM pools, service interfaces, and service chains are reconciled after creating the DPF resources.
 
-[NOTE]
-====
-The `nvidia-k8s-ipam` service remains in a `Pending` state until DPU provisioning completes. This is expected behavior.
-====
-
 .Prerequisites
 
 * You have created the DPF custom resources: `DPFOperatorConfig`, `NodeSRIOVDevicePluginConfig`, `DPUFlavor`, `BFB`, and `DPUDeployment`.

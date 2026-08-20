@@ -76,15 +76,17 @@ $ oc get dpuservices -n dpf-operator-system
 [source,terminal]
 ----
 NAME                            READY   PHASE     AGE
-flannel                         True    Success   4h31m
-hbn-cmlph                       True    Success   3h47m
-nvidia-k8s-ipam                 True    Success   4h31m
-ovn-xcv67                       True    Success   3h47m
-ovs-cni                         True    Success   4h31m
-servicechainset-controller      True    Success   4h31m
-servicechainset-rbac-and-crds   True    Success   4h30m
-sfc-controller                  True    Success   4h31m
-sriov-device-plugin             True    Success   4h31m
+doca-telemetry-service-7s8pb    True    Success   42m
+flannel                         True    Success   26h
+hbn-gffmv                       True    Success   25m
+kube-state-metrics-rbac         True    Success   4h10m
+node-problem-detector           True    Success   4h10m
+nvidia-k8s-ipam-node            True    Success   4h10m
+ovn-f49zx                       True    Success   17m
+ovs-cni                         True    Success   26h
+servicechainset-rbac-and-crds   True    Success   138m
+sfc-controller                  True    Success   26h
+sriov-device-plugin             True    Success   26h
 ----
 
 . Optional: View detailed DPU service status:
