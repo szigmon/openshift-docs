@@ -38,7 +38,7 @@ $ helm upgrade --install dpu-worker-config \
 +
 [NOTE]
 ====
-If your network uses jumbo frames, set the MTU by adding `--set networkMTU=9000` to the command. For OpenShift-standard bridge naming, add `--set bridgeName="br-ex"`.
+For OpenShift-standard bridge naming, add `--set bridgeName="br-ex"`.
 ====
 
 .Verification
