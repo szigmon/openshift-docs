@@ -41,7 +41,7 @@ $ helm upgrade --install dpu-worker-config \
 For OpenShift-standard bridge naming, add `--set bridgeName="br-ex"`.
 ====
 
-.Verification
+.Verify Helm chart created resources
 
 * Verify that the `dpu-worker-config` Helm release is deployed:
 +
@@ -54,7 +54,7 @@ $ helm list -n dpf-hcp-provisioner-system
 +
 [source,terminal]
 ----
-$ oc get machineconfigpool worker-dpu
+$ oc get mcp worker-dpu
 ----
 +
 .Example output
