@@ -39,11 +39,11 @@ spec:
     flavor: hbn-ovnk
     dpuSets:
       - nameSuffix: "dpuset1"
-        dpuAnnotations:
-          noderesources.dpu.nvidia.com/nodesriovdevicepluginconfig: bf3-p0-vfs
-        nodeSelector:
+        dpuNodeSelector:
           matchLabels:
             feature.node.kubernetes.io/dpu-enabled: ""
+        dpuAnnotations:
+          noderesources.dpu.nvidia.com/nodesriovdevicepluginconfig: bf3-p0-vfs
   services:
     hbn:
       serviceTemplate: hbn
