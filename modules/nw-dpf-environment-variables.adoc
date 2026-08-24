@@ -35,9 +35,6 @@ These environment variables must be set before you apply DPF Operator installati
 |The port number of the hosted cluster API server.
 |`6443`
 
-|`TARGETCLUSTER_NODE_CIDR`
-|The CIDR range for the hosted cluster node network.
-|`10.0.0.0/16`
 
 |`POD_CIDR` (optional)
 |The CIDR range for the pod network. Uses OpenShift default if not specified.
