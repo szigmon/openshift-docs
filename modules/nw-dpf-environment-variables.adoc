@@ -49,7 +49,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`VTEP_CIDR`
 |The CIDR range for VXLAN Tunnel Endpoints (VTEP) on the DPU high-speed network. VTEPs are network endpoints that encapsulate and decapsulate VXLAN traffic for overlay networking between DPUs and the infrastructure. This range must match your physical network infrastructure design and be routable between DPUs and host systems.
-|`192.168.200.0/29`
+|`192.168.200.0/22`
 
 |`HBN_OVN_NETWORK`
 |The CIDR range for the HBN-OVN bridge network. Used for HBN service connectivity.
