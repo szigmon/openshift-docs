@@ -32,6 +32,7 @@ $ helm install ovn-kubernetes-resource-injector \
   $OVN_TEMPLATE_CHART_URL/ovn-kubernetes-chart \
   --namespace openshift-ovn-kubernetes \
   --version ${OVN_CHART_VERSION} \
+  --skip-crds \
   --set ovn-kubernetes-resource-injector.enabled=true \
   --set resourceName=openshift.io/bf3-p0-vfs \
   --set nodeWithDPUManifests.enabled=false \
@@ -41,6 +42,11 @@ $ helm install ovn-kubernetes-resource-injector \
   --set commonManifests.enabled=false \
   --wait
 ----
++
+[NOTE]
+====
+The `--skip-crds` flag prevents conflicts with OVN-Kubernetes CRDs already managed by the Cluster Network Operator.
+====
 +
 .Example output
 [source,terminal]
