@@ -46,7 +46,7 @@ These environment variables must be set before you apply DPF Operator installati
 
 |`DPU_HOST_CIDR`
 |The CIDR range for the DPU nodes subnet. Must be set to match your DPU infrastructure.
-|`10.6.135.0/24`
+|`10.0.110.0/24`
 
 |`NUM_VFS`
 |Number of SR-IOV VFs per PF. Used in DPUFlavor configuration (see DPUFlavor chapter).
