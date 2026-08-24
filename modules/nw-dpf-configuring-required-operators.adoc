@@ -220,6 +220,11 @@ spec:
       ovn.dpu.nvidia.com/skip-injection: ""
   applicationSet:
     enabled: false
+  resourceExclusions:
+  - apiGroups:
+    - packages.operators.coreos.com
+    kinds:
+    - PackageManifest
   sso:
     provider: dex
     dex:
