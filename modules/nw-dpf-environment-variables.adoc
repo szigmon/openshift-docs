@@ -89,8 +89,8 @@ These environment variables must be set before you apply DPF Operator installati
 |`<GA-OVN-CHART-VERSION>`
 
 |`OVN_MTU`
-|The MTU value for OVN-Kubernetes networking. Use `1400` for standard MTU or `8940` for jumbo frames.
-|`1400`
+|The MTU value for OVN-Kubernetes networking. Use `1440` for standard MTU (1500 minus encapsulation overhead) or `8940` for jumbo frames (9000 minus encapsulation overhead).
+|`1440`
 
 |`BFB_URL`
 |The download URL for the BlueField Bootstream File image used to provision DPUs. Replace the placeholder with the full URL for the BFB image required by your deployment.
