@@ -84,6 +84,6 @@ $ export SSH_KEY="/root/.ssh/id_ed25519.pub"
 $ export HOSTED_CLUSTER_VIP="192.168.1.200"
 $ export DPU_HOST_CIDR="10.0.110.0/24"
 $ export HBN_OVN_NETWORK="10.0.120.0/22"
-$ export NODES_MTU="1500"
+$ export NODES_MTU="1500"      # Use 1500 for standard MTU, 9000 for jumbo frames
 $ export FLANNEL_POD_CIDR="10.132.0.0/14"
 ----

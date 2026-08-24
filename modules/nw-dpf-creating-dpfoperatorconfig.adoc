@@ -18,6 +18,17 @@ You can create a `DPFOperatorConfig` custom resource to configure the DPF Operat
 
 . Create a file named `dpfoperatorconfig.yaml` with the following content:
 +
+[NOTE]
+====
+MTU Configuration: Set `NODES_MTU` to `1500` for standard MTU environments or `9000` for jumbo frame environments. This value must be consistent across:
+
+* Assisted Installer host configuration (Chapter 3.2.1)
+* DPFOperatorConfig networking section (this step)
+* DPUServiceNAD configuration (Chapter 5.4.6)
+
+Choose based on your network infrastructure capabilities.
+====
++
 [source,yaml]
 ----
 apiVersion: operator.dpu.nvidia.com/v1alpha1
