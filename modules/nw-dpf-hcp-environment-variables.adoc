@@ -82,4 +82,6 @@ $ export OPENSHIFT_PULL_SECRET="/root/pull-secret.txt"
 $ export SSH_KEY_SECRET_NAME="ssh-key"
 $ export SSH_KEY="/root/.ssh/id_ed25519.pub"
 $ export HOSTED_CLUSTER_VIP="192.168.1.200"
+$ export DPU_HOST_CIDR="10.0.110.0/24"
+$ export HBN_OVN_NETWORK="10.0.120.0/22"
 ----
