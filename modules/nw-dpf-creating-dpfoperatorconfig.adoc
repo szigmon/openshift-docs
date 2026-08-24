@@ -35,6 +35,7 @@ spec:
   networking:
     controlPlaneMTU: $NODES_MTU
     highSpeedMTU: $NODES_MTU
+    dpuNodeOOBBridgeName: br-ex
   overrides:
     dpuCNIBinPath: /var/lib/cni/bin/
     dpuCNIPath: /run/multus/cni/net.d/
