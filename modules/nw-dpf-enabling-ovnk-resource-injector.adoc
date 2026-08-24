@@ -7,11 +7,10 @@
 = Enable the OVN-Kubernetes resource injector
 
 [role="_abstract"]
-You can install the OVN-Kubernetes resource injector by using Helm to deploy a `MutatingAdmissionPolicy` that automatically injects SR-IOV virtual function resource requests and network attachment annotations into each pod scheduled to a worker node.
+You can install the OVN-Kubernetes resource injector by using Helm to deploy a mutating webhook that automatically injects SR-IOV virtual function resource requests and network attachment annotations into each pod scheduled to a worker node.
 
 [NOTE]
 ====
-This step requires the `MutatingAdmissionPolicy` feature gate to be enabled on the management cluster.
 Virtual function resource capacity on worker nodes is provided by the `NodeSRIOVDevicePluginConfig` resource, which replaces the manual SR-IOV device plugin `DaemonSet` and control plane node patching used in earlier DPF versions.
 ====
 
@@ -21,7 +20,6 @@ Virtual function resource capacity on worker nodes is provided by the `NodeSRIOV
 * You have installed the `oc` CLI.
 * You have installed the `helm` CLI.
 * You have set the DPF Operator environment variables. For details, see "DPF Operator installation environment variables".
-* The `MutatingAdmissionPolicy` feature gate is enabled on the management cluster.
 * You have created the `NodeSRIOVDevicePluginConfig` resource.
 
 .Procedure
