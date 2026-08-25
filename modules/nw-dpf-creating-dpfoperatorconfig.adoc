@@ -57,6 +57,7 @@ spec:
     dpuLinkerCachePath: /etc/ld.so.cache
     dpuOptLibraryPath: /usr/opt
   provisioningController:
+    enableDynamicBFCFGTemplates: true
     hostAgentDNSPolicy: Default
     dmsTimeout: 900
   nodeSRIOVDevicePluginController:
