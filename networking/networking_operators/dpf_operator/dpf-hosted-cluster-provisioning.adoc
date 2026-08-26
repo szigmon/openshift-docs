@@ -3,7 +3,7 @@
 = Provisioning the DPU hosted cluster
 include::_attributes/common-attributes.adoc[]
 :context: dpf-hosted-cluster-provisioning
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 

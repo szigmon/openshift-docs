@@ -3,7 +3,7 @@
 = About the NVIDIA DPF Operator
 include::_attributes/common-attributes.adoc[]
 :context: about-dpf-operator
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 

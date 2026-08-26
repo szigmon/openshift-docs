@@ -3,7 +3,7 @@
 = Setting up the environment for DPF
 include::_attributes/common-attributes.adoc[]
 :context: dpf-environment-setup
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 

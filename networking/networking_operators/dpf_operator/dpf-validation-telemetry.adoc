@@ -3,7 +3,7 @@
 = Validating traffic and configuring telemetry
 include::_attributes/common-attributes.adoc[]
 :context: dpf-validation-telemetry
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 

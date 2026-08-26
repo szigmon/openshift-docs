@@ -30,6 +30,15 @@ A DPF v{dpf-version} deployment requires specific versions of {product-title}, t
 |{product-version}
 |===
 
+== Required command-line tools
+
+Install the following tools on the workstation from which you run the deployment commands:
+
+* `oc` -- the {product-title} CLI, version {product-version}.
+* `helm` -- required to install the DPF Operator and related Helm charts.
+* `envsubst` -- substitutes environment variables into the manifest templates used throughout this documentation (the `envsubst < file.yaml | oc apply -f -` pattern). Provided by the `gettext` package.
+* `jq` -- parses JSON output during verification and troubleshooting.
+
 == Access requirements
 
 * `cluster-admin` privileges are required for the management cluster.

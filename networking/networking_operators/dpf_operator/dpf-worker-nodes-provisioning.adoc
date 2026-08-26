@@ -3,7 +3,7 @@
 = Adding worker nodes and provisioning DPUs
 include::_attributes/common-attributes.adoc[]
 :context: dpf-worker-nodes-provisioning
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 

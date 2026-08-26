@@ -35,13 +35,8 @@ These environment variables must be set before you apply DPF Operator installati
 |The port number of the hosted cluster API server.
 |`6443`
 
-
-|`VTEP_CIDR`
-|Dedicated range from the DPU high-speed network for tunnel endpoints (see section 2.2). VTEPs (VXLAN Tunnel Endpoints) are network endpoints that encapsulate and decapsulate VXLAN traffic for overlay networking between DPUs and the infrastructure. This range must match your physical network infrastructure design and be routable between DPUs and host systems.
-|`192.168.200.0/22`
-
 |`HBN_OVN_NETWORK`
-|The CIDR range for the HBN-OVN bridge network. Used for HBN service connectivity.
+|The CIDR range for the HBN-OVN bridge network. Used as the OVN `vtepCIDR` (tunnel endpoints) and the `DPUServiceIPAM` network. Must be a dedicated range from the DPU high-speed network, routable between DPUs and host systems.
 |`10.0.120.0/22`
 
 |`DPU_HOST_CIDR`
@@ -49,36 +44,8 @@ These environment variables must be set before you apply DPF Operator installati
 |`10.0.110.0/24`
 
 |`NUM_VFS`
-|Number of SR-IOV VFs per PF. Used in DPUFlavor configuration (see DPUFlavor chapter).
+|Number of SR-IOV VFs per physical function. Sets `NUM_OF_VFS` in the DPUFlavor `nvconfig`. The `NodeSRIOVDevicePluginConfig` allocates these VFs as VF0 (DPF communication channel), VF1 (OVN-Kubernetes management), and the remainder (workload and RDMA).
 |`46`
-
-|`HBN_HELM_REPO_URL`
-|The Helm repository URL for the Host-Based Networking service chart.
-|`\https://helm.ngc.nvidia.com/nvidia/doca`
-
-|`HBN_HELM_CHART_VERSION`
-|The version of the HBN Helm chart.
-|`3.4.0`
-
-|`HBN_IMAGE_REPO`
-|The container image repository for the HBN service.
-|`nvcr.io/nvidia/doca/doca_hbn`
-
-|`HBN_IMAGE_TAG`
-|The container image tag for the HBN service.
-|`3.4.0-doca3.4.0`
-
-|`DTS_HELM_REPO_URL`
-|The Helm repository URL for the DOCA Telemetry Service chart.
-|`\https://helm.ngc.nvidia.com/nvidia/doca`
-
-|`DTS_HELM_CHART_VERSION`
-|The version of the DOCA Telemetry Service Helm chart.
-|`1.25.5`
-
-|`DTS_IMAGE`
-|The container image for the DOCA Telemetry Service.
-|`nvcr.io/nvidia/doca/doca_telemetry:1.25.5-doca3.4.0`
 
 |`OVN_TEMPLATE_CHART_URL`
 |The OCI chart URL for the OVN-Kubernetes Helm chart.
@@ -89,7 +56,7 @@ These environment variables must be set before you apply DPF Operator installati
 |`<GA-OVN-CHART-VERSION>`
 
 |`OVN_MTU`
-|The MTU value for OVN-Kubernetes networking. Use `1440` for standard MTU (1500 minus encapsulation overhead) or `8940` for jumbo frames (9000 minus encapsulation overhead).
+|The MTU value for OVN-Kubernetes overlay networking. Always `NODES_MTU` minus 60 bytes of Geneve encapsulation overhead: `1440` for standard MTU (1500 - 60) or `8940` for jumbo frames (9000 - 60). Must be kept consistent with `NODES_MTU`.
 |`1440`
 
 |`BFB_URL`

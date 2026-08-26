@@ -3,7 +3,7 @@
 = Installing and configuring the DPF Operator
 include::_attributes/common-attributes.adoc[]
 :context: dpf-operator-installation
-:dpf-version: 26.4
+:dpf-version: 26.4.1
 
 toc::[]
 
