@@ -35,8 +35,8 @@ These environment variables must be set before you apply DPF Operator installati
 |The port number of the hosted cluster API server.
 |`6443`
 
-|`HBN_OVN_NETWORK`
-|The CIDR range for the HBN-OVN bridge network. Used as the OVN `vtepCIDR` (tunnel endpoints) and the `DPUServiceIPAM` network. Must be a dedicated range from the DPU high-speed network, routable between DPUs and host systems.
+|`VTEP_CIDR`
+|The CIDR range for the VTEP (tunnel endpoint) network. Used as the OVN `vtepCIDR` and the `DPUServiceIPAM` network. Must be a dedicated range from the DPU high-speed network, routable between DPUs and host systems.
 |`10.0.120.0/22`
 
 |`DPU_HOST_CIDR`

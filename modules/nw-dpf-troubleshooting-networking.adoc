@@ -103,10 +103,10 @@ $ chroot /host
 +
 [source,terminal]
 ----
-$ ip addr show | grep $HBN_OVN_NETWORK
+$ ip addr show | grep $VTEP_CIDR
 ----
 +
-Verify that VTEP interfaces are configured with the correct IP addresses from the `HBN_OVN_NETWORK` range.
+Verify that VTEP interfaces are configured with the correct IP addresses from the `VTEP_CIDR` range.
 
 . Test VTEP connectivity:
 +
