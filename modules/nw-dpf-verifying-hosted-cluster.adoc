@@ -26,8 +26,8 @@ $ oc get dpfhcpprovisioner -n ${CLUSTERS_NAMESPACE}
 .Example output
 [source,terminal]
 ----
-NAME          AGE    STATUS
-dpf-hosted    2m     Provisioning
+NAME         PHASE          READY   HOSTEDCLUSTER   AGE
+dpf-hosted   Provisioning   False   dpf-hosted      2m
 ----
 
 . Wait for the `DPFHCPProvisioner` to reach the `Ready` phase:
@@ -46,16 +46,16 @@ dpfhcpprovisioner.provisioning.dpu.hcp.io/dpf-hosted condition met
 
 .Verification
 
-* Confirm that the `DPFHCPProvisioner` shows `Ready` status with `READY` set to `True`:
+* Confirm that the `DPUCluster` is ready. A `Ready` status indicates that the operator injected the hosted cluster kubeconfig into the `DPUCluster` resource and that the hosted cluster API is reachable, which is the prerequisite for DPU worker nodes to join:
 +
 [source,terminal]
 ----
-$ oc get dpfhcpprovisioner ${HOSTED_CLUSTER_NAME} -n ${CLUSTERS_NAMESPACE}
+$ oc get dpucluster ${HOSTED_CLUSTER_NAME} -n dpf-operator-system
 ----
 +
 .Example output
 [source,terminal]
 ----
-NAME         PHASE   READY   HOSTEDCLUSTER   AGE
-dpf-hosted   Ready   True    dpf-hosted      10m
+NAME         READY   PHASE   TYPE     MAXNODES   VERSION   AGE
+dpf-hosted   True    Ready   static   10                   10m
 ----
