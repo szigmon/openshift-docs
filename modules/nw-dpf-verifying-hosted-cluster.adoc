@@ -46,6 +46,40 @@ dpfhcpprovisioner.provisioning.dpu.hcp.io/dpf-hosted condition met
 
 .Verification
 
+* Confirm that all `DPFHCPProvisioner` status conditions report their expected values, including the ignition conditions that confirm the operator generated the BlueField ignition configuration:
++
+[source,terminal]
+----
+$ oc get dpfhcpprovisioner ${HOSTED_CLUSTER_NAME} -n ${CLUSTERS_NAMESPACE} \
+    -o jsonpath='{range .status.conditions[*]}{.type}{"\t"}{.status}{"\n"}{end}'
+----
++
+.Example output
+[source,terminal]
+----
+ClusterTypeValid              True
+DPUClusterInUse               False
+DPUClusterMissing             False
+SecretsValid                  True
+BlueFieldOCPLayerImageFound   True
+MetalLBConfigured             True
+HostedClusterAvailable        True
+HostedClusterProgressing      False
+HostedClusterDegraded         False
+ValidReleaseInfo              True
+ValidReleaseImage             True
+IgnitionEndpointAvailable     True
+KubeConfigInjected            True
+Ready                         True
+CSRAutoApprovalActive         True
+IgnitionConfigured            True
+----
++
+[NOTE]
+====
+`IgnitionConfigured` and `IgnitionEndpointAvailable` must be `True`: they confirm the operator generated the BlueField ignition configuration and that the ignition server is available. The `DPUClusterInUse`, `DPUClusterMissing`, `HostedClusterProgressing`, and `HostedClusterDegraded` conditions are expected to be `False` in a healthy deployment.
+====
+
 * Confirm that the `DPUCluster` is ready. A `Ready` status indicates that the operator injected the hosted cluster kubeconfig into the `DPUCluster` resource and that the hosted cluster API is reachable, which is the prerequisite for DPU worker nodes to join:
 +
 [source,terminal]
