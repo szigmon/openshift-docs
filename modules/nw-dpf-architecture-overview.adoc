@@ -7,7 +7,7 @@
 = DPF architecture overview
 
 [role="_abstract"]
-The NVIDIA DOCA Platform Framework (DPF) v{dpf-version} deployment on {product-title} {product-version} creates a dual-cluster topology that offloads OVN-Kubernetes data plane operations to NVIDIA BlueField-3 DPUs.
+The NVIDIA DOCA Platform Framework (DPF) v{dpf-version} deployment on {product-title} {product-version} offloads OVN-Kubernetes data plane operations to NVIDIA BlueField-3 DPUs.
 
 In Host Trusted deployments, DPF uses BlueField DPUs as host accelerators, and the host is part of the trusted domain. Administrators can orchestrate both workloads and DPU-accelerated infrastructure by using standard {product-title} APIs and custom resource definitions (CRDs).
 
