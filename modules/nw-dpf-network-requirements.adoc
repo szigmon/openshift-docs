@@ -7,7 +7,7 @@
 = DPF network infrastructure requirements
 
 [role="_abstract"]
-A DPF deployment requires a management switch, a high-speed DPU switch, routable management and VTEP networks with reserved service IPs and a VIP, and a consistent MTU of 1500 or 9000.
+A DPF deployment requires a management switch, a high-speed DPU switch, routable management and VTEP networks with reserved service IPs and a VIP, and a consistent MTU across all network components.
 
 == Switches
 
@@ -24,7 +24,7 @@ High-speed switch:: An NVIDIA SN3700 or similar switch providing 2x 200GbE conne
 
 == MTU configuration
 
-The deployment supports both standard maximum transmission units (MTU) 1500 and jumbo frames, MTU 9000. Jumbo frames can reduce per-packet overhead for DPU-accelerated traffic, but require all network components, including switches, interfaces, and bridges, to support MTU 9000.
+The deployment supports any maximum transmission unit (MTU) value, provided it is consistent across all network components, including switches, interfaces, and bridges. Common values are 1500 for standard frames and 9000 for jumbo frames. Whichever value you choose must be supported end-to-end by every component in the network path.
 
 [IMPORTANT]
 ====
