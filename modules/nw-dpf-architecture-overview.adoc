@@ -15,7 +15,7 @@ By offloading critical {product-title} networking functions, such as OVN-Kuberne
 
 [NOTE]
 ====
-In the current release, Host-Based Networking (HBN) with OVN-Kubernetes is the only supported DPU service combination.
+In the current release, the supported DPU services are Host-Based Networking (HBN) with OVN-Kubernetes and the DOCA Telemetry Service (DTS).
 
 The NVIDIA DPF Operator is distinct from the Red{nbsp}Hat DPU Operator. The Red{nbsp}Hat DPU Operator manages supported non-NVIDIA DPU devices. NVIDIA BlueField-3 deployments use the DPF Operator and related components.
 ====
