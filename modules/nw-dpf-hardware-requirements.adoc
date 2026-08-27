@@ -95,9 +95,6 @@ One NVIDIA BlueField-3 DPU is required per worker node.
 |Management
 |The out-of-band management port is not used in this configuration.
 
-|Operating system
-|The DPUs are provisioned with a BlueField Bootstream File (BFB) containing a Red Hat Enterprise Linux CoreOS (RHCOS) base image.
-
-|Firmware version
-|32.49.1014
+|Operating system and software
+|The DPUs are provisioned with a BlueField Bootstream File (BFB) that bundles a Red Hat Enterprise Linux CoreOS (RHCOS) base image and the NVIDIA DOCA software stack. The DOCA software stack includes the DPU firmware (version 32.49.1014).
 |===
