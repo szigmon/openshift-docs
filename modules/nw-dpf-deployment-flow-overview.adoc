@@ -26,8 +26,8 @@ You must install the DPF Operator before the DPF HCP Provisioner Operator becaus
 
 . *Worker node scale-out and DPU provisioning:* When worker nodes with DPUs are added to the cluster, the DPF Operator flashes the DPUs with a Red Hat Enterprise Linux CoreOS (RHCOS) image and configures them to join the hosted cluster as worker nodes.
 
-. *Service deployment:* After the DPU hosted cluster is operational, data plane DPU services and chains are deployed by DPF.
-
 . *Worker node integration:* Approve DPU worker node certificate signing requests (CSRs) and configure security context constraint (SCC) bindings on the hosted cluster.
+
+. *Service deployment:* After the DPU hosted cluster is operational, data plane DPU services and chains are deployed by DPF.
 
 . *Verification:* Validate end-to-end connectivity through the DPU data plane by running `ping` and `nc` traffic tests between workload pods and services.
