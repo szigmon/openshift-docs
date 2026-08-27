@@ -71,7 +71,7 @@ Two physical x86 servers host the NVIDIA BlueField-3 DPUs and act as worker node
 
 [NOTE]
 ====
-As part of the installation process, a Linux bridge named `br-dpu` is automatically created on the worker node's physical management port by using a `MachineConfig` custom resource to facilitate control-plane traffic from the DPU through the host server.
+As part of the installation process, a Linux bridge named `br-ex` is automatically created on the worker node's physical management port by using a `MachineConfig` custom resource to facilitate control-plane traffic from the DPU through the host server.
 ====
 
 == NVIDIA BlueField-3 DPUs

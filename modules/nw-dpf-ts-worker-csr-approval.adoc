@@ -25,5 +25,5 @@ From a management cluster node, ping the DPU management IP address:
 $ ping <dpu_management_ip>
 ----
 
-Verify the `br-dpu` bridge on worker nodes::
-Confirm that the `br-dpu` bridge that the worker `MachineConfig` resource creates is present and that required firewall rules allow traffic on the DPU management and high-speed networks.
+Verify the `br-ex` bridge on worker nodes::
+Confirm that the `br-ex` bridge that the worker `MachineConfig` resource creates is present and that required firewall rules allow traffic on the DPU management and high-speed networks.
