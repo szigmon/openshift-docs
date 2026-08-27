@@ -37,6 +37,26 @@ The `RHCOS BFB` entry refers to the base RHCOS BlueField Bootstream (BFB) image,
 https://rhcos.mirror.openshift.com/art/storage/prod/streams/rhel-10.2/builds/10.2.20260715-0/aarch64/rhcos-10.2.20260715-0-nvidiabluefield.aarch64.bfb
 ----
 
+The base BFB is layered with the NVIDIA DOCA stack at provisioning time, and the DOCA services run on the DPUs as separately deployed `DPUService` resources. The following versions are pinned by this deployment:
+
+.NVIDIA DOCA component versions
+[cols="1,1",options="header"]
+|===
+|Component |Required version
+
+|NVIDIA DOCA
+|3.4.1
+
+|Host-Based Networking (HBN)
+|3.4.0
+
+|DOCA Telemetry Service (DTS)
+|1.25.5
+
+|OVN-Kubernetes
+|Delivered by the DPF OVN-Kubernetes Helm chart
+|===
+
 == Required command-line tools
 
 Install the following tools on the workstation from which you run the deployment commands:
