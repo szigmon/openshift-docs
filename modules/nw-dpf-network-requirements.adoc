@@ -18,7 +18,7 @@ High-speed switch:: An NVIDIA SN3700 or similar switch providing 2x 200GbE conne
 == Connectivity
 
 * All nodes must have full internet access, both from the host out-of-band and DPU high-speed interfaces.
-* The management network and the high-speed DPU network, which is the VTEP CIDR, must be routable to each other.
+* The management network and the high-speed DPU network, which is the VTEP CIDR, must be routable to each other in *both* directions. Connectivity that works in only one direction allows the deployment to proceed partway and then fail. For a pre-installation check, see "Verifying network connectivity".
 * A dedicated IP address range, which is the VTEP Classless Inter-Domain Routing (CIDR), must be allocated from the high-speed DPU network for DPU service IPs used by HBN and OVN tunnels.
 * A Virtual IP (VIP) from the management subnet must be reserved for the hosted DPU cluster control-plane services. The VIP must have a DNS A record.
 
@@ -30,4 +30,26 @@ The deployment supports any maximum transmission unit (MTU) value, provided it i
 ====
 The MTU value is set during deployment and cannot be changed later. Ensure consistency across all environment components. When using VMs for control plane nodes, ensure the hypervisor bridge MTU matches the chosen value.
 ====
+
+== Verifying network connectivity
+
+Before you begin the installation, confirm that the management network and the high-speed DPU (VTEP) network are routable in *both* directions. A route that works in only one direction allows the deployment to proceed partway and then fail.
+
+.Procedure
+
+. From a host on the management network, confirm that a host on the high-speed (VTEP) network is reachable. Replace `<high_speed_host_ip>` with the IP address of a host on the high-speed network:
++
+[source,terminal]
+----
+$ ping -c 4 <high_speed_host_ip>
+----
+
+. From a host on the high-speed (VTEP) network, confirm that a host on the management network is reachable. Replace `<management_host_ip>` with the IP address of a host on the management network:
++
+[source,terminal]
+----
+$ ping -c 4 <management_host_ip>
+----
+
+Both tests must succeed. If only one direction succeeds, correct the routing or firewall configuration before you proceed with the installation.
 
