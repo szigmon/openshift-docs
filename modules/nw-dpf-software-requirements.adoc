@@ -30,6 +30,13 @@ A DPF v{dpf-version} deployment requires specific versions of {product-title}, t
 |{product-version}
 |===
 
+The RHCOS BlueField Bootstream (BFB) image is available from the {product-title} mirror. For example:
+
+[source,terminal]
+----
+https://rhcos.mirror.openshift.com/art/storage/prod/streams/rhel-10.2/builds/10.2.20260715-0/aarch64/rhcos-10.2.20260715-0-nvidiabluefield.aarch64.bfb
+----
+
 == Required command-line tools
 
 Install the following tools on the workstation from which you run the deployment commands:
