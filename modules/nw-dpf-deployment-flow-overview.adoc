@@ -28,6 +28,6 @@ You must install the DPF Operator before the DPF HCP Provisioner Operator becaus
 
 . *Service deployment:* After the DPU hosted cluster is operational, data plane DPU services and chains are deployed by DPF.
 
-. *Worker node integration:* Approve CSRs, monitor DPU provisioning, and configure security context constraint (SCC) bindings on the hosted cluster.
+. *Worker node integration:* Approve DPU worker node certificate signing requests (CSRs) and configure security context constraint (SCC) bindings on the hosted cluster.
 
-. *Verification:* Validate end-to-end traffic flow, BGP peering, and OVS bridge configuration.
+. *Verification:* Validate end-to-end connectivity through the DPU data plane by running `ping` and `nc` traffic tests between workload pods and services.
