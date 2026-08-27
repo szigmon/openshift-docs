@@ -36,7 +36,7 @@ spec:
   dpuDeploymentRef:
     name: dpudeployment
     namespace: dpf-operator-system
-  machineOSURL: $BLUEFIELD_OCP_IMAGE
+  machineOSURL: $BLUEFIELD_OCP_IMAGE # optional; omit to let the operator resolve the image automatically
   etcdStorageClass: $ETCD_STORAGE_CLASS
   ocpReleaseImage: $OCP_RELEASE_IMAGE
   pullSecretRef:
@@ -51,7 +51,7 @@ where:
 `baseDomain`:: Specifies the base DNS domain for the hosted cluster.
 `dpuClusterRef`:: Specifies a reference to the `DPUCluster` resource that represents the DPU hosted cluster.
 `dpuDeploymentRef`:: Specifies a reference to the `DPUDeployment` resource in the `dpf-operator-system` namespace.
-`machineOSURL`:: Specifies the BlueField {product-title} image URL. When set, this skips automatic image lookup.
+`machineOSURL`:: Optional. Pins a specific BlueField {product-title} image URL. If omitted, the operator automatically resolves the image by matching the {product-title} version against the configured BlueField OCP layer repository.
 `etcdStorageClass`:: Specifies the storage class for etcd persistent volume claims.
 `ocpReleaseImage`:: Specifies the {product-title} release image for the hosted cluster.
 `pullSecretRef`:: Specifies the name of the pull secret in the same namespace.

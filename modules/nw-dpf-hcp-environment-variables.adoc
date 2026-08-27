@@ -32,7 +32,7 @@ These environment variables must be set before you create secrets, the `DPUClust
 |`example.com`
 
 |`BLUEFIELD_OCP_IMAGE`
-|The BlueField {product-title} layer container image URL. When set, this value is used as `machineOSURL` in the `DPFHCPProvisioner` resource and skips automatic image lookup. This image will be available on registry.redhat.io for GA release.
+|Optional. The BlueField {product-title} layer container image URL. When set, this value is used as `machineOSURL` in the `DPFHCPProvisioner` resource and skips automatic image lookup. If left unset, the operator resolves the image automatically. This image will be available on registry.redhat.io for GA release.
 |`<GA-BLUEFIELD-OCP-IMAGE>`
 
 |`ETCD_STORAGE_CLASS`
