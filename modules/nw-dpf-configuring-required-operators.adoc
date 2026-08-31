@@ -7,7 +7,7 @@
 = Configure the required Operators
 
 [role="_abstract"]
-After the required Operators are installed, configure the multicluster engine, Node Feature Discovery, MetalLB, {gitops-shortname}, and Cluster Network Operator for the DPF environment.
+After the required Operators are installed, configure Node Feature Discovery, MetalLB, {gitops-shortname}, and Cluster Network Operator for the DPF environment. This procedure also verifies that the multicluster engine and HyperShift are ready.
 
 .Prerequisites
 
