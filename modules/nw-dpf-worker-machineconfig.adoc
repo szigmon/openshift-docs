@@ -30,11 +30,16 @@ The MachineConfig resource performs several configuration tasks required by DPF:
 [source,terminal]
 ----
 $ helm upgrade --install dpu-worker-config \
-    oci://quay.io/redhat-user-workloads/dpu-kit-for-nvidia-operator-tenant/dpu-worker-config-chart-4-22 \
+    oci://registry.redhat.io/dpu-kit-for-nvidia/dpu-worker-config-chart \
     --namespace dpf-hcp-provisioner-system \
     --create-namespace \
     --disable-openapi-validation
 ----
++
+[NOTE]
+====
+Publication of the `dpu-worker-config` chart to `registry.redhat.io` is pending; the chart location is subject to change.
+====
 
 .Verify Helm chart created resources
 
