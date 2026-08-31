@@ -99,22 +99,71 @@ $ oc patch mcp worker-dpu --type merge -p '{
 Workload pods do not recover after an IPMI reset reboot::
 After an IPMI reset reboot, workload pods might fail to recover because of a known kubelet bug (link:https://github.com/kubernetes/kubernetes/issues/128043[kubernetes/kubernetes#128043]) that prevents virtual function (VF) devices from being recreated immediately at startup. This does not break functionality, but it leaves the cluster in an inconsistent state. Standard and IPMI2 reboots recover cleanly. As a workaround, recreate the affected pods manually if needed.
 
-*Unsupported OVN-Kubernetes features*
+*OVN-Kubernetes feature support*
 
-[IMPORTANT]
-====
-The following OVN-Kubernetes features are not supported in this Technology Preview:
+The following table lists the support and hardware offload status of OVN-Kubernetes features in this Technology Preview.
 
-* User Defined Networks (UDN)
-* Egress IP
-* Administrative Network Policies (ANP)
-* Hybrid Overlay
-* Egress Firewall
-* Quality of Service (QoS)
-* Border Gateway Protocol (BGP)
-* Multicast
-* Local Gateway Mode
-====
+.OVN-Kubernetes feature support and offload status
+[cols="2,1,1",options="header"]
+|===
+|Feature |Supported |Offloaded
+
+|Administrative Network Policies (ANP)
+|Yes
+|Yes
+
+|Egress IP
+|Yes
+|No
+
+|Egress Firewall
+|Yes
+|No
+
+|Egress Quality of Service (QoS)
+|Yes
+|No
+
+|Secondary networks
+|No
+|No
+
+|User Defined Networks (UDN)
+|No
+|No
+
+|Quality of Service (QoS)
+|No
+|No
+
+|Multiple External Gateways (MEG)
+|No
+|No
+
+|OVN-Kubernetes identity
+|No
+|No
+
+|Border Gateway Protocol (BGP)
+|No
+|No
+
+|Multicast
+|No
+|No
+
+|Hybrid Overlay
+|No
+|No
+
+|Local gateway mode
+|No
+|No
+
+|IPFIX/NetFlow sampling
+|No
+|No
+|===
 
 *Grafana deployment issues*
 
