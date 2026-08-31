@@ -10,6 +10,12 @@
 You can deploy traffic test pods and services across the management cluster to validate end-to-end connectivity through the DPU data plane.
 The test workloads include a server pod on a control plane node and worker pods on DPU-enabled nodes, with both standard and host-network configurations.
 
+[NOTE]
+====
+These test workloads use the `nicolaka/netshoot` container image, a community networking-troubleshooting image that is not officially supported by Red Hat or NVIDIA.
+Use it only for connectivity validation and testing, not in production workloads.
+====
+
 .Prerequisites
 
 * You have installed the DPF Operator and provisioned the DPU hosted cluster.
