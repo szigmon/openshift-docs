@@ -44,23 +44,60 @@ include::snippets/technology-preview.adoc[]
 
 *Known issues and limitations*
 
-DPF Operator uninstall limitations::
-The DPF Operator does not provide an automated uninstall procedure. To completely remove DPF from your cluster, you must manually delete DPF-related resources and perform cleanup tasks.
+Only x86_64 workers are supported::
+Only x86_64 worker nodes are supported in this release. ARM-based DPU workers are not supported.
+
+DPF Operator uninstall is not supported::
+The DPF Operator does not support an automated uninstall. If you must remove DPF, set `spec.manageDPUServiceTemplates` to `false` in the `DPFHCPProvisionerConfig` resource before you uninstall. This prevents the DPF HCP Provisioner Operator from continuing to manage `DPUServiceTemplate` resources during the uninstall process.
 
 Secret references are immutable::
-After you create DPF secrets, you cannot modify them. If you need to change credentials or certificates, delete and recreate the secret with the updated values.
+The pull secret and SSH secret references are immutable after creation and cannot be modified. Ensure that each secret contains the correct data before you create it and reference it in the `DPFHCPProvisioner` custom resource.
 
-MTU configuration constraints::
-The MTU setting in the `DPUServiceNAD` must match the physical network infrastructure. Mismatched MTU values can cause connectivity issues between the management cluster and the hosted cluster.
+Secondary pod interfaces are not supported::
+Secondary pod interfaces (MultiNetwork) are not supported.
 
-Secure boot requirements::
-DPUs with secure boot enabled require signed BFB images. Ensure that your BFB images are properly signed and compatible with your secure boot configuration before deployment.
+MTU changes are not supported after deployment::
+You cannot change the MTU value after deployment.
 
-Multi-DPU host limitations::
-Hosts with multiple DPUs require careful network planning to avoid port conflicts and to ensure proper traffic isolation between DPU instances.
+Secure boot firmware requirement::
+To boot the RHCOS BFB image with secure boot enabled, the DPU firmware must be at version 3.1.0 or later. Use a BFB firmware bundle to upgrade the firmware.
 
-Host-Based Networking (HBN) dependency::
-The Host-Based Networking (HBN) daemon set must be running before DPU provisioning begins. Verify that HBN pods are in the `Running` state on all worker nodes before you start DPU provisioning.
+Multi-DPU hosts are not supported::
+Hosts with more than one DPU are not supported.
+
+Redeploying a DPUDeployment is not supported::
+Redeploying a `DPUDeployment` is not supported in this release.
+
+Deployments cannot target all nodes in a cluster::
+Because of a limitation in the resource injector, a deployment can target either the DPU workers or all other nodes, but not both.
+
+Host-Based Networking (HBN) pods stuck in FailedCreatePodSandBox::
+An HBN daemon set pod might remain in the `FailedCreatePodSandBox` state. As a workaround, delete and recreate the affected pods. For more information, see link:https://issues.redhat.com/browse/OCPBUGS-100251[OCPBUGS-100251].
+
+HostedCluster upgrade during an in-progress upgrade::
+Changing the `ocpReleaseImage` of a `HostedCluster` while an upgrade is already in progress is not supported.
+
+Connectivity loss after a DPU reboot or upgrade::
+When a DPU reboots, the corresponding DPU worker node loses connectivity and a `NoExecute` taint is added to the host. Most pods are evicted immediately, but some daemon set pods remain and might lose connectivity until you recreate them. For example:
++
+[source,terminal]
+----
+openshift-network-diagnostics   network-check-target-lpkp2   0/1   Running
+----
+
+DPU stuck in the NodeEffect or Initializing state::
+The NVIDIA Maintenance Operator might fail to pause the machine config pool, which leaves the DPU in the `NodeEffect` or `Initializing` state. As a workaround, pause the `worker-dpu` machine config pool manually:
++
+[source,terminal]
+----
+$ oc patch mcp worker-dpu --type merge -p '{
+  "spec": {"paused": true},
+  "metadata": {"annotations": {"maintenance.nvidia.com/mcp-paused": "true"}}
+}'
+----
+
+Workload pods do not recover after an IPMI reset reboot::
+After an IPMI reset reboot, workload pods might fail to recover because of a known kubelet bug (link:https://github.com/kubernetes/kubernetes/issues/128043[kubernetes/kubernetes#128043]) that prevents virtual function (VF) devices from being recreated immediately at startup. This does not break functionality, but it leaves the cluster in an inconsistent state. Standard and IPMI2 reboots recover cleanly. As a workaround, recreate the affected pods manually if needed.
 
 *Unsupported OVN-Kubernetes features*
 
