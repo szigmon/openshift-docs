@@ -34,7 +34,7 @@ $ helm install ovn-kubernetes-resource-injector \
   --version ${OVN_CHART_VERSION} \
   --skip-crds \
   --set ovn-kubernetes-resource-injector.enabled=true \
-  --set resourceName=openshift.io/bf3-p0-vfs \
+  --set resourceName=openshift.io/bf3_vfs \
   --set nodeWithDPUManifests.enabled=false \
   --set nodeWithoutDPUManifests.enabled=false \
   --set dpuManifests.enabled=false \

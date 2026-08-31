@@ -24,7 +24,7 @@ This resource configures SR-IOV device plugin pods on worker nodes to allocate v
 apiVersion: noderesources.dpu.nvidia.com/v1alpha1
 kind: NodeSRIOVDevicePluginConfig
 metadata:
-  name: bf3-p0-vfs
+  name: bf3-vfs
   namespace: dpf-operator-system
 spec:
   devicePluginResources:
@@ -34,7 +34,7 @@ spec:
         - pfIndex: 0
           start: 1
           end: 1
-    - name: bf3-p0-vfs
+    - name: bf3_vfs
       type: vf
       options:
         isRdma: true
@@ -42,12 +42,15 @@ spec:
         - pfIndex: 0
           start: 2
           end: 45
+        - pfIndex: 1
+          start: 0
+          end: 45
 ----
 +
 where:
 +
 `bf3-p0-vfs-mgmt`:: Reserves VF index 1 on PF0 for DPU management connectivity.
-`bf3-p0-vfs`:: Allocates VF indices 2-45 on PF0 for workload traffic with RDMA enabled. The `pfIndex: 0` value refers to the first physical function of the BlueField-3 DPU.
+`bf3_vfs`:: Allocates VF indices 2-45 on PF0 and VF indices 0-45 on PF1 for workload traffic with RDMA enabled. The `pfIndex` values refer to the first (`0`) and second (`1`) physical functions of the BlueField-3 DPU.
 
 . Apply the resource file:
 +
@@ -68,5 +71,5 @@ $ oc get nodesriovdevicepluginconfig -n dpf-operator-system
 .Example output
 [source,terminal]
 ----
-bf3-p0-vfs    30s
+bf3-vfs    30s
 ----

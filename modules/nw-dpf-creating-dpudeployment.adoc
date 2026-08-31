@@ -43,7 +43,7 @@ spec:
           matchLabels:
             feature.node.kubernetes.io/dpu-enabled: ""
         dpuAnnotations:
-          noderesources.dpu.nvidia.com/nodesriovdevicepluginconfig: bf3-p0-vfs
+          noderesources.dpu.nvidia.com/nodesriovdevicepluginconfig: bf3-vfs
   services:
     hbn:
       serviceTemplate: hbn
