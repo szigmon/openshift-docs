@@ -33,8 +33,12 @@ data:
 +
 [NOTE]
 ====
-If the `cluster-monitoring-config` `ConfigMap` already exists with other settings, edit it instead of replacing it.
-Add only the `enableUserWorkload: true` line to the existing `config.yaml` data.
+If the `cluster-monitoring-config` `ConfigMap` already exists with other settings, edit it instead of replacing it, and add only the `enableUserWorkload: true` line to the existing `config.yaml` data:
+
+[source,terminal]
+----
+$ oc -n openshift-monitoring edit configmap cluster-monitoring-config
+----
 ====
 
 . Apply the `ConfigMap`:
