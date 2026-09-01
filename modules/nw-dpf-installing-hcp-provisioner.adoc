@@ -17,21 +17,15 @@ The operator manages the lifecycle of hosted clusters for DPU environments.
 * A storage class is available for etcd persistent volumes, such as {lvms} or an equivalent.
 * The DPF Operator is installed and DPF CRDs are available.
 * The Helm CLI (`helm`) is installed on your workstation.
+* You have a pull secret file that includes credentials for `registry.redhat.io`. Helm reads its registry credentials from this file, which is separate from the container runtime configuration.
 
 .Procedure
 
-. Clone the `dpf-hcp-provisioner-operator` repository:
+. Set the `OPENSHIFT_PULL_SECRET` environment variable to the path of your pull secret file:
 +
 [source,terminal]
 ----
-$ git clone https://github.com/rh-ecosystem-edge/dpf-hcp-provisioner-operator.git
-----
-
-. Change to the cloned repository directory:
-+
-[source,terminal]
-----
-$ cd dpf-hcp-provisioner-operator
+$ export OPENSHIFT_PULL_SECRET="/root/pull-secret.txt"
 ----
 
 . Install the operator by using Helm:
@@ -39,12 +33,19 @@ $ cd dpf-hcp-provisioner-operator
 [source,terminal]
 ----
 $ helm upgrade --install dpf-hcp-provisioner-operator \
-    helm/dpf-hcp-provisioner-operator \
+    oci://registry.redhat.io/dpu-kit-for-nvidia/dpf-hcp-provisioner-chart \
+    --registry-config "${OPENSHIFT_PULL_SECRET}" \
+    --version 4.22.0 \
     --namespace dpf-hcp-provisioner-system \
     --create-namespace \
     --set image.repository=registry.redhat.io/dpu-kit-for-nvidia/dpf-hcp-provisioner-rhel10-operator \
     --set image.tag=v4.22
 ----
++
+[NOTE]
+====
+Publication of the `dpf-hcp-provisioner-chart` chart to `registry.redhat.io` is pending; the chart location is subject to change.
+====
 +
 .Example output
 [source,terminal]
