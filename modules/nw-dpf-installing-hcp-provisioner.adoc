@@ -38,7 +38,7 @@ $ cd dpf-hcp-provisioner-operator
 +
 [source,terminal]
 ----
-$ helm install dpf-hcp-provisioner-operator \
+$ helm upgrade --install dpf-hcp-provisioner-operator \
     helm/dpf-hcp-provisioner-operator \
     --namespace dpf-hcp-provisioner-system \
     --create-namespace \
@@ -59,7 +59,7 @@ STATUS: deployed
 ====
 The Helm chart creates a `DPFHCPProvisionerConfig` singleton custom resource named `default` that defines the operator-wide configuration.
 This resource controls settings such as the BlueField OCP layer image repository, MetalLB integration, and `DPUServiceTemplate` management.
-To customize these settings, modify the `provisionerConfig` section in your Helm `values.yaml` file before running the `helm install` command.
+To customize these settings, modify the `provisionerConfig` section in your Helm `values.yaml` file before running the `helm upgrade --install` command.
 ====
 
 .Verification
