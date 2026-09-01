@@ -211,21 +211,15 @@ spec:
   server:
     route:
       enabled: true
-    labels:
-      ovn.dpu.nvidia.com/skip-injection: ""
-  controller:
-    labels:
-      ovn.dpu.nvidia.com/skip-injection: ""
-  repo:
-    labels:
-      ovn.dpu.nvidia.com/skip-injection: ""
+  controller: {}
+  repo: {}
   applicationSet:
     enabled: false
-  resourceExclusions:
-  - apiGroups:
-    - packages.operators.coreos.com
-    kinds:
-    - PackageManifest
+  resourceExclusions: |
+    - apiGroups:
+      - packages.operators.coreos.com
+      kinds:
+      - PackageManifest
   sso:
     provider: dex
     dex:
@@ -260,25 +254,6 @@ $ oc wait deployment argocd-redis -n dpf-operator-system \
 ----
 deployment.apps/argocd-redis condition met
 ----
-
-. Add the OVN skip-injection label to the Redis deployment:
-+
-[source,terminal]
-----
-$ oc patch deployment argocd-redis -n dpf-operator-system \
-  --type=merge -p '{"spec":{"template":{"metadata":{"labels":{"ovn.dpu.nvidia.com/skip-injection":""}}}}}'
-----
-+
-.Example output
-[source,terminal]
-----
-deployment.apps/argocd-redis patched
-----
-+
-[IMPORTANT]
-====
-The OpenShift GitOps operator ArgoCD CR does not support custom labels on the Redis component. This label must be applied manually to prevent the OVN resource injector from modifying Redis pods. The ArgoCD operator will not override this patch.
-====
 
 . Enable global IP forwarding on the OVN-Kubernetes configuration:
 +
