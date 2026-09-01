@@ -185,7 +185,7 @@ spec:
   name: openshift-gitops-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: openshift-gitops-operator.v1.21.0
+  startingCSV: openshift-gitops-operator.v1.21.3
 ----
 
 . Create a file named `argocd-instance.yaml` with the following `ArgoCD` resource definition:
