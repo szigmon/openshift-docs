@@ -64,12 +64,6 @@ The following optional fields use working defaults and do not need to be specifi
 `serviceNetwork`:: The service network CIDR for the hosted cluster. Default: `172.30.0.0/16`.
 `machineNetwork`:: The machine network CIDR for the hosted cluster. Uses the management cluster network by default.
 `nodeSelector`:: A node selector for scheduling the hosted control plane pods. Uses default scheduling by default.
-`machineOSURL`:: Pins a specific BlueField {product-title} image URL, for example `$BLUEFIELD_OCP_IMAGE`. If omitted, the operator automatically resolves the image by matching the {product-title} version against the configured BlueField OCP layer repository.
-+
-[NOTE]
-====
-The `machineOSURL` field is planned for removal in a future release, when automatic image resolution becomes the only supported path.
-====
 
 . Apply the resource with variable substitution:
 +
