@@ -42,11 +42,6 @@ $ helm upgrade --install dpf-hcp-provisioner-operator \
     --set image.tag=v4.22
 ----
 +
-[NOTE]
-====
-Publication of the `dpf-hcp-provisioner-chart` chart to `registry.redhat.io` is pending; the chart location is subject to change.
-====
-+
 .Example output
 [source,terminal]
 ----

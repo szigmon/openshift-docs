@@ -45,11 +45,6 @@ $ helm upgrade --install dpu-worker-config \
     --create-namespace \
     --disable-openapi-validation
 ----
-+
-[NOTE]
-====
-Publication of the `dpu-worker-config` chart to `registry.redhat.io` is pending; the chart location is subject to change.
-====
 
 .Verify Helm chart created resources
 
