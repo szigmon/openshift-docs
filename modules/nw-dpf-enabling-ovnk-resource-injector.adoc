@@ -31,6 +31,7 @@ Virtual function resource capacity on worker nodes is provided by the `NodeSRIOV
 $ helm upgrade --install -n openshift-ovn-kubernetes ovn-kubernetes \
   "$OVN_TEMPLATE_CHART_URL/ovn-kubernetes-chart" \
   --version "${OVN_CHART_VERSION}" \
+  --skip-crds \
   --set ovn-kubernetes-resource-injector.enabled=true \
   --set ovn-kubernetes-resource-injector.resourceName="openshift.io/bf3_vfs" \
   --set ovn-kubernetes-resource-injector.prioritizeOffloading=false \
