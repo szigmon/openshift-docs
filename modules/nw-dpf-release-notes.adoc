@@ -99,6 +99,9 @@ $ oc patch mcp worker-dpu --type merge -p '{
 Workload pods do not recover after an IPMI reset reboot::
 After an IPMI reset reboot, workload pods might fail to recover because of a known kubelet bug (link:https://github.com/kubernetes/kubernetes/issues/128043[kubernetes/kubernetes#128043]) that prevents virtual function (VF) devices from being recreated immediately at startup. This does not break functionality, but it leaves the cluster in an inconsistent state. Standard and IPMI2 reboots recover cleanly. As a workaround, recreate the affected pods manually if needed.
 
+The SR-IOV device plugin can report fewer virtual functions than configured::
+After a node reboot or DPU redeployment, the SR-IOV device plugin might publish the node's virtual function (VF) resource count before all VFs are created. The init container unblocks when the first VF appears instead of waiting for all configured VFs, so the reported `openshift.io/bf3_vfs` capacity can be lower than expected. As a workaround, restart the SR-IOV device plugin pod on the affected node, after which the full count is reported.
+
 *OVN-Kubernetes feature support*
 
 The following table lists the support and hardware offload status of OVN-Kubernetes features in this Technology Preview.
