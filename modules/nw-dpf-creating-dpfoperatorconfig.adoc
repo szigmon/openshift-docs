@@ -108,7 +108,27 @@ $ oc rollout status deployment --namespace dpf-operator-system dpuservice-contro
 deployment "dpuservice-controller-manager" successfully rolled out
 ----
 
-. Verify that all pods in the `dpf-operator-system` namespace are running:
+. Verify that all Operator deployments in the `dpf-operator-system` namespace become available:
++
+[NOTE]
+====
+You might need to run this command more than once, because the deployments become available at different times as the Operator reconciles its resources.
+====
++
+[source,terminal]
+----
+$ oc wait --for=condition=Available deployment --all -n dpf-operator-system --timeout=300s
+----
++
+.Example output
+[source,terminal]
+----
+deployment.apps/dpf-operator-controller-manager condition met
+deployment.apps/dpf-provisioning-controller-manager condition met
+deployment.apps/dpuservice-controller-manager condition met
+----
+
+. Optionally, list the pods in the `dpf-operator-system` namespace to review their status:
 +
 [source,terminal]
 ----
