@@ -284,7 +284,7 @@ $ oc get multiclusterengine mce
 [source,terminal]
 ----
 NAME   STATUS      AGE     CURRENTVERSION   DESIREDVERSION   MESSAGE
-mce    Available   4m58s   2.17.0           2.17.0           All components available
+mce    Available   4m58s   2.17.2           2.17.2           All components available
 ----
 
 * Verify HyperShift is enabled:
