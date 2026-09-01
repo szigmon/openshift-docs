@@ -67,6 +67,8 @@ spec:
     replicas: 1
   staticClusterManager:
     disable: false
+  dpuServiceController:
+    disableHostNetworkReadyNoExecuteTaints: false
   flannel:
     podCIDR: $FLANNEL_POD_CIDR
 ----
