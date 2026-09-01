@@ -55,9 +55,9 @@ The output lists the worker nodes that Node Feature Discovery (NFD) has labeled 
 +
 [source,terminal]
 ----
-NAME                           STATUS     ROLES    AGE   VERSION
-host-worker1.example.com   NotReady   worker   62s   v1.35.6
-host-worker2.example.com   NotReady   worker   66s   v1.35.6
+NAME           STATUS     ROLES    AGE   VERSION
+host-worker1   NotReady   worker   62s   v1.35.6
+host-worker2   NotReady   worker   66s   v1.35.6
 ----
 +
 If no nodes are returned, verify that NFD is running.
