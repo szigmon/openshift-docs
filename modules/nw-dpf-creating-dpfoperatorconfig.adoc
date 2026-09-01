@@ -22,9 +22,9 @@ You can create a `DPFOperatorConfig` custom resource to configure the DPF Operat
 ====
 MTU Configuration: Set `NODES_MTU` to `1500` for standard MTU environments or `9000` for jumbo frame environments. This value must be consistent across:
 
-* Assisted Installer host configuration (Chapter 3.2.1)
+* Assisted Installer host configuration
 * DPFOperatorConfig networking section (this step)
-* DPUServiceNAD configuration (Chapter 5.4.6)
+* DPUServiceNAD configuration
 
 Choose based on your network infrastructure capabilities.
 ====
