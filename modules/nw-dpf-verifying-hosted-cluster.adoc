@@ -56,8 +56,8 @@ $ oc get dpucluster ${HOSTED_CLUSTER_NAME} -n dpf-operator-system
 .Example output
 [source,terminal]
 ----
-NAME         READY   PHASE   TYPE     MAXNODES   VERSION   AGE
-dpf-hosted   True    Ready   static   10                   10m
+NAME         READY   PHASE   TYPE     MAXNODES   VERSION   NODESCOUNT   AGE
+dpf-hosted   True    Ready   static   10         v1.35.6   0            10m
 ----
 
 * Confirm that the admin kubeconfig secret referenced by the `DPUCluster` was created in the `dpf-operator-system` namespace:
