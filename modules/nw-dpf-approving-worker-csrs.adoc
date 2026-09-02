@@ -12,7 +12,7 @@ You must approve the pending certificate signing requests (CSRs) for worker node
 [NOTE]
 ====
 When you add worker nodes by using the Bare Metal Operator, CSRs are typically auto-approved and the `worker-dpu` label is applied automatically through the `MachineSet` template.
-Manual approval is required when you use the Assisted Installer or as a fallback if auto-approval is not functioning.
+Manual approval is required as a fallback if auto-approval is not functioning.
 ====
 
 .Prerequisites
