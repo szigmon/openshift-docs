@@ -51,6 +51,12 @@ spec:
 ----
 $ oc apply -f dts.yaml
 ----
++
+.Example output
+[source,terminal]
+----
+dpuserviceconfiguration.svc.dpu.nvidia.com/doca-telemetry-service created
+----
 
 .Verification
 
