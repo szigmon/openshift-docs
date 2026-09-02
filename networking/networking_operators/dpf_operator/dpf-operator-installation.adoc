@@ -36,7 +36,10 @@ include::modules/nw-dpf-creating-bfb.adoc[leveloffset=+1]
 // DPUDeployment
 include::modules/nw-dpf-creating-dpudeployment.adoc[leveloffset=+1]
 
-// HBN and OVN-Kubernetes DPU services
+// HBN DPU service
+include::modules/nw-dpf-creating-hbn-service.adoc[leveloffset=+1]
+
+// OVN-Kubernetes DPU service
 include::modules/nw-dpf-creating-ovnk-service.adoc[leveloffset=+1]
 
 // DOCA Telemetry Service
