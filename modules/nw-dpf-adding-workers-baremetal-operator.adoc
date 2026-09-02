@@ -73,7 +73,7 @@ $ oc get clusteroperator baremetal
 [source,terminal]
 ----
 NAME        VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
-baremetal   4.22.x    True        False         False      ...
+baremetal   4.22.11   True        False         False      ...
 ----
 
 . Create a file named `provisioning.yaml` with the following content to disable the provisioning network:
