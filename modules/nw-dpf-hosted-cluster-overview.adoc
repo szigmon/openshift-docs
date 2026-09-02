@@ -22,7 +22,7 @@ BlueField {product-title} layer image lookup::
 Matches {product-title} release images to corresponding BlueField container images by using container registry tag lookup.
 
 Kubeconfig provisioning::
-Extracts the hosted cluster admin kubeconfig and stores it in the secret referenced by the `DPUCluster` custom resource, enabling the management cluster to communicate with the DPU hosted cluster.
+Extracts the hosted cluster admin kubeconfig, stores it in a secret, and sets the `spec.kubeconfig` field of the `DPUCluster` custom resource to reference that secret, enabling the management cluster to communicate with the DPU hosted cluster.
 
 MetalLB configuration::
 Deploys `IPAddressPool` and `L2Advertisement` resources for `LoadBalancer` service exposure.

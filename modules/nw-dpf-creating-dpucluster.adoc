@@ -8,7 +8,7 @@
 
 [role="_abstract"]
 The `DPUCluster` resource tells the DPF Operator about the hosted cluster where DPU services will run.
-The `spec.kubeconfig` field references the name of the secret that holds the hosted cluster admin kubeconfig. After the hosted cluster is created, the DPF HCP Provisioner Operator automatically creates this secret in the same namespace; you do not create it manually.
+Do not set the `spec.kubeconfig` field. After the hosted cluster is created, the DPF HCP Provisioner Operator automatically creates the admin kubeconfig secret in the `dpf-operator-system` namespace and populates the `spec.kubeconfig` field of this resource to reference it.
 
 .Prerequisites
 
@@ -29,7 +29,6 @@ metadata:
 spec:
   type: static
   maxNodes: 10
-  kubeconfig: ${HOSTED_CLUSTER_NAME}-admin-kubeconfig
 ----
 
 . Apply the resource with variable substitution:
