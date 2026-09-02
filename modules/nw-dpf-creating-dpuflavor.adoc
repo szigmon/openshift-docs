@@ -49,7 +49,7 @@ If the BlueField-3 is already configured with the correct values, the DPU agent 
 
 .Procedure
 
-. Create a file named `dpuflavor.yaml` with the content for your MTU configuration.
+. Create a file named `dpuflavor.yaml` for your MTU configuration and apply it.
 +
 Select the `DPUFlavor` that matches your MTU configuration:
 +
@@ -173,6 +173,19 @@ spec:
       _ovs-vsctl set Interface pbrdputobrovn type=patch options:peer=pbrovntobrdpu
 ----
 
+Apply the resource file:
+
+[source,terminal]
+----
+$ envsubst < dpuflavor.yaml | oc apply -f -
+----
+
+.Example output
+[source,terminal]
+----
+dpuflavor.provisioning.dpu.nvidia.com/hbn-ovnk created
+----
+
 *Jumbo frames (MTU 9000):*
 
 [source,yaml,subs="verbatim"]
@@ -294,20 +307,20 @@ spec:
       _ovs-vsctl set Interface pbrovntobrdpu type=patch options:peer=pbrdputobrovn
       _ovs-vsctl set Interface pbrdputobrovn type=patch options:peer=pbrovntobrdpu
 ----
---
 
-. Apply the resource file:
-+
+Apply the resource file:
+
 [source,terminal]
 ----
 $ envsubst < dpuflavor.yaml | oc apply -f -
 ----
-+
+
 .Example output
 [source,terminal]
 ----
 dpuflavor.provisioning.dpu.nvidia.com/hbn-ovnk created
 ----
+--
 
 .Verification
 
