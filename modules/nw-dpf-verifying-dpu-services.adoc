@@ -38,6 +38,7 @@ $ oc wait --for=condition=ApplicationsReconciled \
 ----
 dpuservice.svc.dpu.nvidia.com/hbn-v4ffl condition met
 dpuservice.svc.dpu.nvidia.com/ovn-xmkjj condition met
+dpuservice.svc.dpu.nvidia.com/doca-telemetry-service-7t2qd condition met
 ----
 
 . Verify that the `DPUServiceIPAM` resources are reconciled:
