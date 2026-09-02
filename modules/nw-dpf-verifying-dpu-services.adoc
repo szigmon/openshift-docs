@@ -19,6 +19,11 @@ After the DPU hosted cluster and `DPUCluster` are ready, verify that the DPU ser
 
 .Procedure
 
+[NOTE]
+====
+These verification commands may need to be run multiple times to ensure the condition is met, because the DPU services can take time to converge.
+====
+
 . Verify that the `DPUService` resources are created and reconciled:
 +
 [source,terminal]
