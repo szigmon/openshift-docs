@@ -43,6 +43,59 @@ REVISION: 2
 TEST SUITE: None
 ----
 
+. Grant OpenShift Route permissions to the Grafana Operator:
++
+The community Grafana Operator requires additional RBAC permissions to manage {product-title} routes. Create a file named `grafana-operator-route-rbac.yaml` with the following content:
++
+[source,yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: grafana-operator-route-manager
+rules:
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  - routes/custom-host
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: grafana-operator-route-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: grafana-operator-route-manager
+subjects:
+- kind: ServiceAccount
+  name: grafana-operator
+  namespace: grafana-operator
+----
++
+Apply the file:
++
+[source,terminal]
+----
+$ oc apply -f grafana-operator-route-rbac.yaml
+----
++
+.Example output
+[source,terminal]
+----
+clusterrole.rbac.authorization.k8s.io/grafana-operator-route-manager created
+clusterrolebinding.rbac.authorization.k8s.io/grafana-operator-route-manager created
+----
+
 . Create Grafana RBAC for Prometheus access:
 +
 Create a `ServiceAccount` with a long-lived token and bind it to the `cluster-monitoring-view` `ClusterRole` so Grafana can query the platform Prometheus:
