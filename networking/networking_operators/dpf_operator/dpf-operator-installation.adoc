@@ -56,6 +56,3 @@ include::modules/nw-dpf-creating-service-nads.adoc[leveloffset=+1]
 
 // DPU service IPAM
 include::modules/nw-dpf-creating-service-ipam.adoc[leveloffset=+1]
-
-// Verify DPU service reconciliation
-include::modules/nw-dpf-verifying-dpu-services.adoc[leveloffset=+1]
