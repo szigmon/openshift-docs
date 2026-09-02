@@ -48,11 +48,12 @@ $ envsubst < bfb.yaml | oc apply -f -
 +
 [source,terminal]
 ----
-$ oc get bfbs.provisioning.dpu.nvidia.com -n dpf-operator-system bf-bundle -o yaml | grep phase
+$ oc get bfb -n dpf-operator-system bf-bundle
 ----
 +
 .Example output
 [source,terminal]
 ----
-phase: Ready
+NAME        PHASE   AGE
+bf-bundle   Ready   3m
 ----
