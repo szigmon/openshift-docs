@@ -40,7 +40,7 @@ These environment variables must be set before you apply DPF Operator installati
 |`10.0.120.0/22`
 
 |`DPU_HOST_CIDR`
-|The CIDR range for the DPU nodes subnet. Must be set to match your DPU infrastructure.
+|The CIDR range of the subnet where the DPU host nodes reside. Used as the OVN `hostCIDR`. You must set this to your actual host subnet; the example value is illustrative only and is not a usable default.
 |`10.0.110.0/24`
 
 |`NUM_VFS`
