@@ -123,7 +123,10 @@ stringData:
 $ envsubst < bmc-secret.yaml | oc apply -f -
 ----
 
-. Create a file named `baremetalhost.yaml` with the following content:
+. Create a file named `baremetalhost.yaml`. The `userData` secret determines the node type:
++
+--
+* For a DPU-equipped worker node, reference the `worker-dpu-user-data-managed` secret:
 +
 [source,yaml]
 ----
@@ -147,6 +150,37 @@ spec:
     name: worker-dpu-user-data-managed
     namespace: openshift-machine-api
 ----
+
+* For a regular worker node without a DPU, reference the `worker-user-data-managed` secret instead:
++
+[source,yaml]
+----
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: $WORKER_NAME
+  namespace: openshift-machine-api
+spec:
+  online: true
+  bootMACAddress: $BOOT_MAC
+  rootDeviceHints:
+    deviceName: $ROOT_DEVICE
+  bmc:
+    address: redfish-virtualmedia+https://$BMC_IP
+    credentialsName: $WORKER_NAME-bmc-secret
+    disableCertificateVerification: true
+  customDeploy:
+    method: install_coreos
+  userData:
+    name: worker-user-data-managed
+    namespace: openshift-machine-api
+----
++
+[IMPORTANT]
+====
+Adding a regular worker node without a DPU is a Technology Preview feature.
+====
+--
 
 . Apply the `BareMetalHost` resource:
 +
