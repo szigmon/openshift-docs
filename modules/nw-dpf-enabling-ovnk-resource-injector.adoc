@@ -50,12 +50,12 @@ $ helm upgrade --install -n openshift-ovn-kubernetes ovn-kubernetes \
 .Example output
 [source,terminal]
 ----
-Release "ovn-kubernetes" does not exist. Installing it now.
 NAME: ovn-kubernetes
 LAST DEPLOYED: Sun Nov  2 17:10:29 2025
 NAMESPACE: openshift-ovn-kubernetes
 STATUS: deployed
 REVISION: 1
+DESCRIPTION: Install complete
 TEST SUITE: None
 ----
 
@@ -71,6 +71,6 @@ $ oc get mutatingwebhookconfiguration | grep ovn
 .Example output
 [source,terminal]
 ----
-NAME                                                    WEBHOOKS   AGE
-ovn-kubernetes-resource-injector                        1          22h
+NAME                                                WEBHOOKS   AGE
+ovn-kubernetes-ovn-kubernetes-resource-injector     1          22h
 ----
