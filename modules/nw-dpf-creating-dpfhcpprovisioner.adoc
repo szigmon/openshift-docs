@@ -39,9 +39,9 @@ spec:
   etcdStorageClass: $ETCD_STORAGE_CLASS
   ocpReleaseImage: $OCP_RELEASE_IMAGE
   pullSecretRef:
-    name: $PULL_SECRET_NAME
+    name: $DPFHCPPROVISIONER_PULL_SECRET_NAME
   sshKeySecretRef:
-    name: $SSH_KEY_SECRET_NAME
+    name: $DPFHCPPROVISIONER_SSH_SECRET_NAME
   virtualIP: $HOSTED_CLUSTER_VIP
 ----
 +
