@@ -100,6 +100,12 @@ When `provisioningNetwork` is set to `Disabled`, servers boot by using Redfish v
 ----
 $ oc apply -f provisioning.yaml
 ----
++
+.Example output
+[source,terminal]
+----
+provisioning.metal3.io/provisioning-configuration configured
+----
 
 . Create a file named `bmc-secret.yaml` with the following content to store the BMC credentials:
 +
@@ -121,6 +127,12 @@ stringData:
 [source,terminal]
 ----
 $ envsubst < bmc-secret.yaml | oc apply -f -
+----
++
+.Example output
+[source,terminal]
+----
+secret/worker-01-bmc-secret created
 ----
 
 . Create a file named `baremetalhost.yaml`. The `userData` secret determines the node type:
@@ -187,6 +199,12 @@ Adding a regular worker node without a DPU is a Technology Preview feature.
 [source,terminal]
 ----
 $ envsubst < baremetalhost.yaml | oc apply -f -
+----
++
+.Example output
+[source,terminal]
+----
+baremetalhost.metal3.io/worker-01 created
 ----
 
 .Verification
