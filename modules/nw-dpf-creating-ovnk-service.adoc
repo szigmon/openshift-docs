@@ -13,6 +13,11 @@ The OVN-Kubernetes service provides pod networking on the DPU.
 
 [NOTE]
 ====
+HBN and OVN-Kubernetes are the supported DPU network services. The DOCA Telemetry Service (DTS), which you configure in a later step, is deployed for observability and is not a network service.
+====
+
+[NOTE]
+====
 The `DPUServiceTemplate` resources for both HBN and OVN-Kubernetes are automatically created and managed by the `dpf-hcp-provisioner-operator`.
 You only need to create the `DPUServiceConfiguration` resources.
 ====
