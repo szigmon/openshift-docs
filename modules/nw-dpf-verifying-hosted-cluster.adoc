@@ -60,20 +60,6 @@ NAME         READY   PHASE   TYPE     MAXNODES   VERSION   NODESCOUNT   AGE
 dpf-hosted   True    Ready   static   10         v1.35.6   0            10m
 ----
 
-* Confirm that the BlueField ignition configuration was generated. The `IgnitionConfigured` condition gates the `Ready` phase, so a `True` status confirms that the operator generated the ignition configuration used to provision DPU worker nodes:
-+
-[source,terminal]
-----
-$ oc get dpfhcpprovisioner ${HOSTED_CLUSTER_NAME} -n ${CLUSTERS_NAMESPACE} \
-    -o jsonpath='{.status.conditions[?(@.type=="IgnitionConfigured")].status}{"\n"}'
-----
-+
-.Example output
-[source,terminal]
-----
-True
-----
-
 * Confirm that the admin kubeconfig secret referenced by the `DPUCluster` was created in the `dpf-operator-system` namespace:
 +
 [source,terminal]
