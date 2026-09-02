@@ -37,7 +37,8 @@ $ helm upgrade --install dpf-hcp-provisioner-operator \
     --registry-config "${OPENSHIFT_PULL_SECRET}" \
     --version 4.22.0 \
     --namespace dpf-hcp-provisioner-system \
-    --create-namespace
+    --create-namespace \
+    --set provisionerConfig.manageDPUServiceTemplates=true
 ----
 +
 .Example output
