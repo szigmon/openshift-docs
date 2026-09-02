@@ -73,3 +73,17 @@ $ oc get secret ${HOSTED_CLUSTER_NAME}-admin-kubeconfig -n dpf-operator-system
 NAME                          TYPE     DATA   AGE
 dpf-hosted-admin-kubeconfig   Opaque   1      10m
 ----
+
+* Confirm that the ignition configurations for the hosted cluster were generated in the hosted control plane namespace. These configmaps provide the ignition data that DPU worker nodes use to join the hosted cluster:
++
+[source,terminal]
+----
+$ oc get configmap -n ${CLUSTERS_NAMESPACE}-${HOSTED_CLUSTER_NAME} | grep ignition
+----
++
+.Example output
+[source,terminal]
+----
+ignition-config-fips         1      10m
+ignition-config-worker-ssh   1      10m
+----
