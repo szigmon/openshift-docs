@@ -12,7 +12,7 @@ The HBN service provides BGP-based networking on the DPU with ECMP routing suppo
 
 [NOTE]
 ====
-HBN and OVN-Kubernetes are the supported DPU network services. The DOCA Telemetry Service (DTS), which you configure in a later step, is deployed for observability and is not a network service.
+HBN and OVN-Kubernetes are currently the only supported DPU network services. The DOCA Telemetry Service (DTS), which you configure in a later step, is deployed for observability and is not a network service.
 ====
 
 [NOTE]
