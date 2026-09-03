@@ -45,12 +45,6 @@ $ helm upgrade --install dpu-worker-config \
     --create-namespace \
     --disable-openapi-validation
 ----
-+
-[NOTE]
-====
-For jumbo frames, append `--set networkMTU=9000` to match the node MTU configured for the DPU network services.
-Omit this flag when using the standard MTU of `1500`.
-====
 
 .Verify Helm chart created resources
 
