@@ -48,7 +48,7 @@ $ helm upgrade --install dpu-worker-config \
 +
 [NOTE]
 ====
-For jumbo frames, append `--set networkMTU=$NODES_MTU` (for example, `--set networkMTU=9000`) to match the MTU configured for the DPU network services.
+For jumbo frames, append `--set networkMTU=9000` to match the node MTU configured for the DPU network services.
 Omit this flag when using the standard MTU of `1500`.
 ====
 
