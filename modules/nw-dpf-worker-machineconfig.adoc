@@ -33,8 +33,7 @@ The MachineConfig resource performs several configuration tasks required by DPF:
 $ export OPENSHIFT_PULL_SECRET="/root/pull-secret.txt"
 ----
 
-. Deploy the `dpu-worker-config` Helm chart to create the worker node MachineConfig.
-If you configured jumbo frames (the MTU 9000 `DPUFlavor`), add `--set networkMTU=9000` to the command to match the node MTU. Omit that flag when using the standard MTU of `1500`.
+. Deploy the `dpu-worker-config` Helm chart to create the worker node MachineConfig:
 +
 [source,terminal]
 ----
@@ -46,6 +45,12 @@ $ helm upgrade --install dpu-worker-config \
     --create-namespace \
     --disable-openapi-validation
 ----
++
+[NOTE]
+====
+For jumbo frames, append `--set networkMTU=9000` to match the node MTU configured for the DPU network services.
+Omit this flag when using the standard MTU of `1500`.
+====
 
 .Verify Helm chart created resources
 
